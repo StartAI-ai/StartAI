@@ -8,53 +8,83 @@
     <title>Página de Cadastro - StartaAI</title>
 </head>
 <body>
+    <nav>
+        <input type="checkbox" id="sidebar-active">
+        <label for="sidebar-active" class="open-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+            </svg>
+        </label>
+        <label id="overlay" for="sidebar-active"></label>
+        <div class="links-container">
+            <label for="sidebar-active" class="close-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </label>
+            <a class="home-link" href="/pages/home/home.html">
+                <span class="link-content">
+                    <img class="ahome" src="/assets/img/robot-icon.png.png" alt="Home Icon">
+                    <span class="link-text">StartAi</span>
+                </span>
+            </a>
+            <a class="profi-link" href="/pages/login/cadastroPage.html">
+                <span class="link-content">
+                    <img class="aprofi" src="/assets/img/profile-icon.png.png" alt="Conta">
+                    <span class="link-text">Conta</span>
+                </span>
+            </a>
+        </div>
+    </nav>
 
     <div class="container" id="container">
-        <div class="form-container sign-up">
-            <img class="img_logo" src="img/startai.png" alt="">
-            <form>
-                <h1>Criar Conta</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <button>Cadastre-se</button>
-            </form>
-        </div>
-        <div class="form-container sign-in">
-            <form>
+        <div class="form">
+            <div class="form-container sign-up">
                 <img class="img_logo" src="img/startai.png" alt="">
-                <h1>Entrar</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
+                <form>
+                    <h1>Criar Conta</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
 
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <a href="#">Esqueceu Sua Senha?</a>
-                <button>Entrar</button>
-            </form>
-        </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>Bem Vindo de Volta!</h1>
-                    <p>Insira seus dados pessoais para usar todos os recursos do site</p>
-                    <button class="hidden" id="login">Entrar</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>Olá, Amigo</h1>
-                    <p>Registre-se com seus dados pessoais para usar todos os recursos do site</p>
-                    <button class="hidden" id="register">Cadastre-se</button>
+                    <input type="text" placeholder="Nome">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Senha">
+                    <button>Cadastre-se</button>
+                </form>
+            </div>
+            <div class="form-container sign-in">
+                <form>
+                    <img class="img_logo" src="img/startai.png" alt="">
+                    <h1>ENTRAR</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Senha">
+                    <a href="#">Esqueceu Sua Senha?</a>
+                    <button>Entrar</button>
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Bem Vindo de Volta!</h1>
+                        <p>Insira seus dados pessoais para usar todos os recursos do site</p>
+                        <button class="hidden" id="login">Entrar</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Seja BEM VINDO</h1>
+                        <p>Registre-se com seus dados pessoais para usar todos os recursos do site</p>
+                        <button class="hidden" id="register">Cadastre-se</button>
+                    </div>
                 </div>
             </div>
         </div>

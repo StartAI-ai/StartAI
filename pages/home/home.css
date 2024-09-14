@@ -5,112 +5,22 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'cherry';
     background-color: #7F3FBF;
     color: white;
+
 }
+
+@font-face {
+  font-family: 'cherry';
+  src: url("/fonts/Cherry.ttf");
+  }
 
 .logo{
     width: auto
 }
 
-/* 
-.container {
-    width: 80%;
-    max-width: 900px;
-
-}
-
-.botaozao{
-    display: flex;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.icon-bot img {
-    width: 70px; 
-    height: 55px; 
-}
-
-.user-icon img {
-    width: 45px; 
-    height: 40px; 
-}
-
-main {
-    background-color: #4A148C;
-    border-radius: 20px;
-    text-align: left;
-    align-items: flex-start;
-    padding-left: 50px;
-    size: 70px;
-
-}
-
-.logo {
-    flex: 1;
-    text-align: left;
-}
-
-.menu {
-    display: flex;
-    flex-direction: line;
-    text-align: left;
-    padding-left: 20px;
-    
-    
-}
-
-.botoes{
-    margin-top: 13%;
-    margin-left: 5%;
-    justify-content: space-between;
-}
-
-.logo img {
-    margin-bottom: 30px;
-    size: 30px;
-}
-
-.menu-button {
-    background-color: #9C27B0;
-    border: none;
-    color: white;
-    font-size: 40px;
-    padding: 20px 50px;
-    border-radius: 30px;
-    display: flex;
-    text-align: left;
-    align-items: flex-end;
-    flex: 1;
-    margin-bottom: 20px;
-    cursor: pointer;
-    width: 70%;
-    justify-content: center;
-}
-
-.menu-button .icon img {
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
-}
-
-.menu-button:hover {
-    background-color: #6A1B9A;
-}
-
-.menu-button jogos {
-    align-items: flex-end;
-    flex: 1;
-    text-align: right;
-} */
+/* Menu */
 nav{
     height: 60px;
     background-color: var(--color-1);
@@ -124,10 +34,37 @@ nav{
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: #24262b;
+    position: flex;
+    padding-bottom: 90px;
   }
+
+  .links-container .ahome{
+    margin-top: 50%;
+    width: 80px;
+  }
+  .links-container .aprofi{
+    margin-top:80%;
+    width: 45px;
+  }
+  .links-container a{
+    color: white;
+    font-size:24px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-family: cherry;
+
+  }
+
+  span{
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+
   nav a{
-    height: 100%;
+
     padding: 0 20px;
+    margin-top: 5%;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -138,6 +75,8 @@ nav{
   }
   nav .home-link{
     margin-right: auto;
+    display: flex;
+    position: flex;
   }
   nav svg{
     fill: var(--text-color);
@@ -187,7 +126,159 @@ nav{
     }
   }
 
+/* Conteúdo */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: dino;
+  src: url("/TCC/assets/fonts/Dinokids.ttf");
+}
+
+@font-face {
+font-family: cherry;
+src: url("/TCC/assets/fonts/Cherry.ttf");
+}
+
+@font-face {
+font-family: kids;
+src: url("/TCC/assets/fonts/Kids\ Swing.ttf");
+}
+
+@font-face {
+font-family: squire;
+src: url("/TCC/assets/fonts/Squire\ Hawaii\ .otf");
+}
+
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #7F3FBF;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  display: flex; /* Magic starts here, turning your container into a flex container */
+  justify-content: center; /* This centers the child horizontally */
+  align-items: center; /* And this centers it vertically */
+  height: 100vh ;
+
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.icon-bot img {
+  width: 70px; 
+  height: 55px; 
+}
+
+.user-icon img {
+  width: 45px; 
+  height: 45px; 
+}
+
+main {
+  background-color: #4A148C;
+  border-radius: 20px;
+  text-align: left;
+  align-items: flex-start;
+  padding-left: 50px;
+  size: 40px;
+
+  width:100%; /* Set any width you prefer */
+  height: 65%; /* And any height */
+  margin-left: 50%;
+
+}
+
+.botoes {
+ margin-top:35%;
+ margin-left: 10%;
+}
+
+.logo {
+  flex: 1;
+  text-align: left;
+}
+
+.menu {
+  
+  display: flex;
+  margin-top: 0%;  
+  width: 50%; /* Set any width you prefer */
+  height: 50%; /* And any height */
+}
+
+.logo img {
+  margin-bottom: 30px;
+  size: 30px;
+}
+
+.menu-button {
+  background-color: #9C27B0;
+  border: none;
+  color: white;
+  font-size: 40px;
+  padding: 20px 115px;
+  border-radius: 30px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex: 1;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 70%;
+  justify-content: center;
+  font-family: cherry;
+  margin-top: 9%;
+  margin-left: 5%;
+}
+
+.menu-button .icon img {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.menu-button:hover {
+  background-color: #6A1B9A;
+}
+
+.menu-button jogos {
+  align-items: flex-end;
+  flex: 1;
+  text-align: right;
+}
+
+.botoes a{
+  text-decoration: none;
+
+}
+
+
+
+
+
+
+
+/* Footer */
 .row{
 	display: flex;
 	flex-wrap: wrap;

@@ -1,11 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.container {
+  text-align: center;
+  background-color: #9716D4;
 }
 
-.bg-purple {
-  background-color: #9716D4; /* Tom de roxo */
+body{
+  background-color: white;
+  font-family: 'cherry';
 }
 
 @font-face {
@@ -13,13 +13,55 @@
   src: url("/fonts/Cherry.ttf");
   }
 
-body {
-font-family: 'cherry';
-margin: 0;
-background-color: #f0f0f0;
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 150px); /* Increased cell size */
+  grid-gap: 15px; /* Increased gap */
+  margin: 50px auto; /* Center the game */
+  align-items: center;
+  margin-left: 300px;
 }
- /* Menu */
- nav{
+
+.cell {
+  width: 150px; /* Increased cell size */
+  height: 150px; /* Increased cell size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem; /* Increased font size */
+  cursor: pointer;
+  border: 5px solid #ffffff; /* Increased border size */
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menu li {
+  margin-left: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.highlight {
+  border:6px solid yellow; /* Borda amarela quando destacado */
+}
+/* Menu */
+nav{
   height: 60px;
   background-color: var(--color-1);
   display: flex;
@@ -32,9 +74,9 @@ background-color: #f0f0f0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #7F3FBF;
   position: flex;
   padding-bottom: 90px;
+  background-color: #9716D4;
 }
 
 .links-container .ahome{
@@ -123,91 +165,3 @@ nav svg{
     z-index: 9;
   }
 }
-
-.menu-container {
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 90%;
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.logo {
-color: white;
-font-size: 24px;
-font-weight: bold;
-padding-left: 20px;
-}
-
-.menu {
-list-style: none;
-display: flex;
-margin: 0;
-padding-right: 20px;
-}
-
-.menu li {
-margin: 0 15px;
-}
-
-.menu li a {
-color: white;
-text-decoration: none;
-font-size: 16px;
-}
-
-.menu li a:hover {
-text-decoration: underline;
-}
-
-.game-container {
-text-align: center;
-padding: 50px 20px;
-}
-
-#game-board {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-gap: 15px;
-justify-content: center; /* Centraliza horizontalmente */
-max-width: 800px; /* Limite de largura máxima */
-margin: 0 auto;
-}
-
-.card {
-width: 150px;
-height: 150px;
-background-color: #9716D4; /* Fundo roxo */
-color: #fff;
-font-size: 24px;
-display: flex;
-justify-content: center;
-align-items: center;
-cursor: pointer;
-border-radius: 10px;
-transition: transform 0.3s;
-}
-
-.card img {
-width: 100px;
-}
-
-.card.flipped img {
-display: block;
-}
-
-.card.flipped .cover {
-display: none;
-}
-
-.card:hover {
-transform: scale(1.05);
-}
-
-.card.highlight {
-  box-shadow: 0 0 10px yellow; /* Sombra amarela */
-  border: 2px solid yellow; /* Borda amarela */
-}
-
-

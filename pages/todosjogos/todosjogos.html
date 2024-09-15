@@ -1,100 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todos os Jogos</title>
-    <link rel="stylesheet" href="/pages/todosjogos/todosjogos.css">
+    <title>Quadrado Seletor Automático</title>
+    <link rel="stylesheet" href="todosjogos.css">
 </head>
-<nav>
-    <input type="checkbox" id="sidebar-active">
-    <label for="sidebar-active" class="open-sidebar-button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
-        </svg>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-        <label for="sidebar-active" class="close-sidebar-button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
-                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-            </svg>
-        </label>
-        <a class="home-link" href="/pages/home/home.html">
-            <span class="link-content">
-                <img class="ahome" src="/assets/img/robot-icon.png.png" alt="Home Icon">
-                <span class="link-text">StartAi</span>
-            </span>
-        </a>
-        <a class="profi-link" href="/pages/login/cadastroPage.html">
-            <span class="link-content">
-                <img class="aprofi" src="/assets/img/profile-icon.png.png" alt="Conta">
-                <span class="link-text">Conta</span>
-            </span>
-        </a>
-    </div>
-</nav> 
 <body>
-    
-    <div class="container">
-        <div class="card">
-            <img src="/assets/img/ftmemoria.png" alt="Controle Ocular">
-            <a href="/pages/jogomemoria/memoria.html"><button id="eyeControl">Jogo da Memória</button></a>
+
+    <header>
+        <div class="header-icon">
+            <img src="../../assets/img/robot-icon.png.png" alt="Icone de Controle Ocular" />
+            <span class="link-text">StartAi</span>
         </div>
-        <div class="card">
-            <img src="/assets/img/ftvelha.png" alt="Luva de Controle">
-            <a href="/pages/jogovelha/jogodavelha.html"><button id="gloveControl">Jogo da Velha</button></a>
+        <div class="user-icon">
+            <img src="../../assets/img/profile-icon.png.png" alt="Ícone do Usuário" />
         </div>
-        <div class="card">
-            <img src="" alt="">
-            <a href="/pages/"></a><button id="keyboardControl"></button>
-        </div>
-    </div>
-    <script src="controle.ts"></script>
-</body>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="containerfot">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>company</h4>
-                    <ul>
-                        <li><a href="#">about us</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                        <li><a href="#">payment options</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>online shop</h4>
-                    <ul>
-                        <li><a href="#">watch</a></li>
-                        <li><a href="#">bag</a></li>
-                        <li><a href="#">shoes</a></li>
-                        <li><a href="#">dress</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>follow us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="game" id="square1">
+                <img src="img/pescaria.png" alt="Jogo da Pescaria" />
+            </div>
+            <div class="game" id="square2">
+                <img src="img/guerra.png" alt="Joga de Batalha" />
+            </div>
+            <div class="game" id="square3">
+                <img src="img/velha.png" alt="Joga da Velha" />
+            </div>
+            <div class="game" id="square4">
+                <img src="img/memoria.png" alt="Jogo da Memoria" />
             </div>
         </div>
-   </footer>
-    <!-- Fim Footer -->
+    </main>
+
+    <footer>
+        <p>pisque ou mova seu dedo para escolher um jogo</p>
+    </footer>
+    <script type="module" src="todosjogos.js"></script>
+</body>
 </html>

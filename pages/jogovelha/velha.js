@@ -1,3 +1,7 @@
+import apiService from '../../IA/ApiService.js';
+import { navigateTo } from '../../routes/routes.js';
+
+
 let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 const cells = document.querySelectorAll('.cell');
@@ -9,12 +13,77 @@ cells.forEach((cell, index) => {
     cell.addEventListener('click', () => handleCellClick(index));
 });
 
-// Adiciona o evento de teclado para a tecla espaço
-document.addEventListener('keydown', (event) => {
-    if (event.code === 'Space') {
-        handleCellClick(currentCell);
-    }
+
+const userIcons = document.querySelectorAll('.user-icon');
+    
+userIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+        console.log('Ícone do usuário clicado'); // Verifique se isso é exibido
+        navigateTo('login');
+    });
 });
+
+let timerInterval;
+let seconds = 0;
+let minutes = 0;
+
+function updateTimer() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+
+    const timeString = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    document.getElementById('timer').textContent = timeString;
+}
+
+function startTimer() {
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    seconds = 0;
+    minutes = 0;
+    document.getElementById('timer').textContent = '00:00';
+    document.getElementById('score').textContent = '000';
+}
+
+// Extrai o parâmetro da URL
+const urlParams = new URLSearchParams(window.location.search);
+const controlType = urlParams.get('controlType');
+
+// Inicia o seletor com base no parâmetro
+startSelector(controlType);
+
+function startSelector(param) {
+    if (param === 'teclado') {
+        squares.forEach(square => {
+            square.addEventListener('click', handleSquareClick);
+        });
+    } else {
+        startGame();
+    }
+}
+
+
+// Função para iniciar o jogo
+async function startGame() {
+    apiService.getBlinkData('http://localhost:3000/conectado/olho').subscribe((data) => {
+
+        if(data.success){
+            highlightNextCell();
+            setInterval(moveToNextCell, 1000);    
+            startTimer();    
+        }
+
+        if(data.piscada){
+            handleCellClick(currentCell);
+        }
+    });
+    
+}
 
 // Função para lidar com o clique nas células
 function handleCellClick(index) {
@@ -25,7 +94,7 @@ function handleCellClick(index) {
         currentPlayer = 'O';
         if (!checkWinner()) {
             // Espera 500ms antes do bot jogar
-            setTimeout(autoPlay, 500);
+            setTimeout(autoPlay, 1000);
         }
     }
 }
@@ -180,8 +249,3 @@ function moveToNextCell() {
     highlightNextCell();
 }
 
-// Inicia o jogo destacando a primeira célula
-highlightNextCell();
-
-// Automatiza a movimentação da seleção a cada 1 segundo
-setInterval(moveToNextCell, 1000);

@@ -1,12 +1,14 @@
 const routes = {
     home: '/index.html',
     todosJogos: '/pages/todosjogos/todosjogos.html',
-    login: '/pages/login/cadastroPage.html'
+    login: '/pages/login/cadastroPage.html',
+    jogoVelha: '/pages/jogovelha/velha.html'
 };
 
 // Função para redirecionar para uma rota com parâmetros de consulta
 function navigateTo(routeName, params = {}) {
     const route = routes[routeName];
+    console.log(routeName);
     if (route) {
         // Verifica se a rota é a de login; se for, não adiciona parâmetros
         if (routeName === 'login') {

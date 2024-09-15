@@ -70,9 +70,13 @@ function startSelector(param) {
 
 // Função para iniciar o jogo
 async function startGame() {
+    const spinner = document.getElementById('loading-spinner');
+    spinner.style.display = 'block'; 
+
     apiService.getBlinkData('http://localhost:3000/conectado/olho').subscribe((data) => {
 
         if(data.success){
+            spinner.style.display = 'none'; 
             highlightNextCell();
             setInterval(moveToNextCell, 1000);    
             startTimer();    

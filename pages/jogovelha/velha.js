@@ -1,7 +1,6 @@
 import apiService from '../../IA/ApiService.js';
 import { navigateTo } from '../../routes/routes.js';
 
-
 let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 const cells = document.querySelectorAll('.cell');
@@ -16,7 +15,6 @@ cells.forEach((cell, index) => {
 var controle = false;
 
 const userIcons = document.querySelectorAll('.user-icon');
-    
 userIcons.forEach(icon => {
     icon.addEventListener('click', () => {
         console.log('Ícone do usuário clicado'); // Verifique se isso é exibido
@@ -40,7 +38,7 @@ function updateTimer() {
 }
 
 function startTimer() {
-    timerInterval = setInterval(updateTimer, 2000);
+    timerInterval = setInterval(updateTimer, 1000); // Corrigido para atualizar a cada 1 segundo
 }
 
 function resetTimer() {
@@ -59,43 +57,45 @@ const controlType = urlParams.get('controlType');
 startSelector(controlType);
 
 function startSelector(param) {
-    if (param === 'teclado') {
-        squares.forEach(square => {
-            square.addEventListener('click', handleSquareClick);
-        });
+    if (param != 'teclado') {
+        document.removeEventListener('click', handleScreenClick); // Remove o evento de clique da tela se for teclado
+        startGame();
     } else {
+        document.addEventListener('click', handleScreenClick); // Adiciona o evento de clique da tela para outros controles
         startGame();
     }
 }
 
-
 // Função para iniciar o jogo
 async function startGame() {
-    const spinner = document.getElementById('loading-spinner');
-    spinner.style.display = 'block'; 
 
-    if(controlType == 'ocular'){
+    if (controlType === 'ocular') {
+        const spinner = document.getElementById('loading-spinner');
+        spinner.style.display = 'block'; 
+    
         apiService.getBlinkData('http://localhost:3000/conectado/olho').subscribe((data) => {
-
-            if(data.success){
+            if (data.success) {
                 spinner.style.display = 'none'; 
                 highlightNextCell();
                 setInterval(moveToNextCell, 2000);    
                 startTimer();    
             }
-    
-            if(data.piscada){
+
+            if (data.piscada) {
                 handleCellClick(currentCell);
             }
         });
     }
 
-    if(controlType == 'luva'){
-        apiService.getBlinkData('http://localhost:3000/conectado/luva').subscribe((data) => {
+    if (controlType === 'luva') {
+
+        const spinner = document.getElementById('loading-spinner');
+        spinner.style.display = 'block'; 
     
-            if(data.piscada){
-                if(!controle){
-                    var controle = true;
+        apiService.getBlinkData('http://localhost:3000/conectado/luva').subscribe((data) => {
+            if (data.piscada) {
+                if (!controle) {
+                    controle = true;
                     spinner.style.display = 'none'; 
                     highlightNextCell();
                     setInterval(moveToNextCell, 2000);    
@@ -104,9 +104,6 @@ async function startGame() {
             }
         });
     }
-
-
-    
 }
 
 // Função para lidar com o clique nas células
@@ -117,7 +114,7 @@ function handleCellClick(index) {
         cells[index].textContent = currentPlayer;
         currentPlayer = 'O';
         if (!checkWinner()) {
-            // Espera 500ms antes do bot jogar
+            // Espera 1000ms antes do bot jogar
             setTimeout(autoPlay, 1000);
         }
     }
@@ -125,11 +122,13 @@ function handleCellClick(index) {
 
 // Função para destacar a próxima célula em ordem de coluna e linha
 function highlightNextCell() {
-    // Remove o destaque de todas as células
-    cells.forEach(cell => cell.classList.remove('highlight'));
+    if (controlType !== 'teclado') {
+        // Remove o destaque de todas as células
+        cells.forEach(cell => cell.classList.remove('highlight'));
 
-    // Destaca a célula atual
-    cells[currentCell].classList.add('highlight');
+        // Destaca a célula atual
+        cells[currentCell].classList.add('highlight');
+    }
 }
 
 // Função que faz o bot jogar
@@ -273,3 +272,11 @@ function moveToNextCell() {
     highlightNextCell();
 }
 
+// Função para lidar com o clique na tela
+function handleScreenClick(event) {
+    const cell = Array.from(cells).find(cell => cell.contains(event.target));
+    if (cell) {
+        const index = parseInt(cell.getAttribute('data-index'));
+        handleCellClick(index);
+    }
+}

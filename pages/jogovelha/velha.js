@@ -12,6 +12,12 @@ cells.forEach((cell, index) => {
     cell.addEventListener('click', () => handleCellClick(index));
 });
 
+const resetButton = document.querySelector('.reset-button');
+if (resetButton) {
+    resetButton.addEventListener('click', resetGame);
+}
+
+
 var controle = false;
 
 const userIcons = document.querySelectorAll('.user-icon');
@@ -246,25 +252,29 @@ function drawWinningLine(combo) {
     line.style.transform = `rotate(${angle}deg)`;
 }
 
-// Função para resetar o jogo
 function resetGame() {
+    // Reinicia o tabuleiro
     board = ['', '', '', '', '', '', '', '', ''];
     cells.forEach(cell => {
         cell.textContent = '';
         cell.classList.remove('highlight');
     });
+    
+    // Reinicia o estado do jogo
     currentPlayer = 'X';
     currentCell = 0; // Reinicia a célula destacada
     winningCombo = []; // Limpa a combinação vencedora
-
-    // Remove a linha vencedora
+    
+    // Remove a linha vencedora, se existir
     const winningLine = document.querySelector('.winning-line');
     if (winningLine) {
         winningLine.remove();
     }
 
-    highlightNextCell(); // Inicia o destaque das células
+    // Destaca a próxima célula após o reset
+    highlightNextCell();
 }
+
 
 // Função para mover a seleção de célula para a próxima
 function moveToNextCell() {

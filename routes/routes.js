@@ -2,7 +2,8 @@ const routes = {
     home: '/index.html',
     todosJogos: '/pages/todosjogos/todosjogos.html',
     login: '/pages/login/cadastroPage.html',
-    jogoVelha: '/pages/jogovelha/velha.html'
+    jogoVelha: '/pages/jogovelha/velha.html',
+    jogoMemoria: '/pages/jogomemoria/memoria.html'
 };
 
 // Função para redirecionar para uma rota com parâmetros de consulta

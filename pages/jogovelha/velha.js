@@ -13,6 +13,7 @@ cells.forEach((cell, index) => {
     cell.addEventListener('click', () => handleCellClick(index));
 });
 
+var controle = false;
 
 const userIcons = document.querySelectorAll('.user-icon');
     
@@ -39,7 +40,7 @@ function updateTimer() {
 }
 
 function startTimer() {
-    timerInterval = setInterval(updateTimer, 1000);
+    timerInterval = setInterval(updateTimer, 2000);
 }
 
 function resetTimer() {
@@ -73,19 +74,38 @@ async function startGame() {
     const spinner = document.getElementById('loading-spinner');
     spinner.style.display = 'block'; 
 
-    apiService.getBlinkData('http://localhost:3000/conectado/olho').subscribe((data) => {
+    if(controlType == 'ocular'){
+        apiService.getBlinkData('http://localhost:3000/conectado/olho').subscribe((data) => {
 
-        if(data.success){
-            spinner.style.display = 'none'; 
-            highlightNextCell();
-            setInterval(moveToNextCell, 1000);    
-            startTimer();    
-        }
+            if(data.success){
+                spinner.style.display = 'none'; 
+                highlightNextCell();
+                setInterval(moveToNextCell, 2000);    
+                startTimer();    
+            }
+    
+            if(data.piscada){
+                handleCellClick(currentCell);
+            }
+        });
+    }
 
-        if(data.piscada){
-            handleCellClick(currentCell);
-        }
-    });
+    if(controlType == 'luva'){
+        apiService.getBlinkData('http://localhost:3000/conectado/luva').subscribe((data) => {
+    
+            if(data.piscada){
+                if(!controle){
+                    var controle = true;
+                    spinner.style.display = 'none'; 
+                    highlightNextCell();
+                    setInterval(moveToNextCell, 2000);    
+                }
+                handleCellClick(currentCell);
+            }
+        });
+    }
+
+
     
 }
 

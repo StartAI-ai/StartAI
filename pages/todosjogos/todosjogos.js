@@ -44,7 +44,7 @@ function handleSquareClick(event) {
                 navigateTo('jogoVelha', { controlType });
                 break;
             default:
-                navigateTo({}, { controlType });
+                navigateTo('jogoMemoria', { controlType });
                 break;
         }
 }
